@@ -1,0 +1,831 @@
+:root {
+    --color-primary: #0f0f0f;
+    --color-secondary: #ffffff14;
+    --color-secondary-hover: #3c3c3c;
+    --color-secondary-active: #f1f1f1;
+    --text-color-primary: #f1f1f1;
+    --text-color-secondary: #aaaaaa;
+    --button-width: 40px;
+    --button-height: 40px;
+    --button-border-radius: 50%;
+    --button-background-color: #0f0f0f;
+    --button-background-color-hover: #ffffff14;
+    --button-border: none;
+}
+
+::-webkit-scrollbar {
+    width: 9px;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--text-color-secondary);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-secondary);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Roboto, Arial, sans-serif;
+    background-color: var(--color-primary);
+    color: var(--text-color-primary);
+}
+
+button {
+    cursor: pointer;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    height: 56px;
+}
+
+.left-nav {
+    display: flex;
+    width: 169px;
+    height: 100%;
+    padding-left: 20px;
+}
+
+.hamburger {
+    width: var(--button-width);
+    height: var(--button-height);
+    border-radius: var(--button-border-radius);
+    margin-block: 8px;
+    background-color: var(--button-background-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.hamburger:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+.hamburger button {
+    width: 24px;
+    height: 24px;
+    border: var(--button-border);
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.hamburger button img {
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    background-color: transparent;
+    width: 90px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: var(--text-color-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a img {
+    width: 100%;
+    height: 100%;
+}
+
+.logo a sup {
+    margin-bottom: 20px;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+.centre-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    /* position: relative; */
+}
+
+/* .search-icon {
+    display: none;
+    top: 0;
+    width: 40px;
+    height: 38px;
+    background-color: rgba(255, 255, 255, 0.01);
+    border-top: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--color-secondary);
+    border-left: 1px solid var(--color-secondary);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.search-icon img {
+    width: 100%;
+    height: 100%;
+    transform: scale(.5);
+} */
+.centre-nav form input[type="search"] {
+    width: 536px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.01);
+    border: 1px solid var(--color-secondary);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-left: 20px;
+    color: var(--text-color-primary);
+    outline: none;
+}
+
+#search::-webkit-search-cancel-button {
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url(./Assets/icons/close-svgrepo-com.svg);
+    background-size: 70%;
+    background-position: center;
+}
+
+#search::-webkit-search-cancel-button:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+.centre-nav form input[type="search"]:focus {
+    border: 1px solid #4848fc;
+}
+
+.centre-nav form button[type="submit"] {
+    background-color: var(--color-secondary);
+    width: 64px;
+    height: 40px;
+    border-top: 1px solid var(--color-secondary);
+    border-right: 1px solid var(--color-secondary);
+    border-bottom: 1px solid var(--color-secondary);
+    border-left: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.centre-nav form button[type="submit"] img {
+    width: 100%;
+    height: 100%;
+    transform: scale(.7);
+}
+
+.centre-nav .voice {
+    width: var(--button-width);
+    height: var(--button-height);
+    margin-left: 15px;
+    border-radius: var(--button-border-radius);
+    border: var(--button-border);
+    background-color: var(--color-secondary);
+    position: relative;
+}
+
+.centre-nav .voice::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 130%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    background: var(--color-secondary-hover);
+    color: white;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+}
+
+.centre-nav .voice:hover::before {
+    opacity: .8;
+    visibility: visible;
+}
+
+.centre-nav .voice:hover {
+    background-color: var(--color-secondary-hover);
+}
+
+.centre-nav .voice img {
+    width: 100%;
+    height: 100%;
+}
+
+.right-nav {
+    display: flex;
+    justify-content: space-around;
+    padding-right: 20px;
+}
+
+.create,
+.notification {
+    width: var(--button-width);
+    height: var(--button-height);
+    margin-right: 10px;
+    border: var(--button-border);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+}
+
+.create img,
+.notification img {
+    width: 100%;
+    height: 100%;
+    transform: scale(.8);
+}
+
+.create:hover,
+.notification:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+.profile {
+    width: 33px;
+    height: 33px;
+    margin-inline: 15px;
+    margin-top: 5px;
+    border: var(--button-border);
+    border-radius: var(--button-border-radius);
+    background-color: #83948e;
+    font-size: 20px;
+    color: var(--text-color-primary);
+}
+
+.side-bar {
+    width: 74px;
+    height: 100vh;
+    background-color: var(--color-primary);
+    top: 66px;
+    position: fixed;
+}
+
+.side-bar div {
+    display: flex;
+    width: 100%;
+    height: 296px;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.side-bar div button {
+    width: 100%;
+    height: 74px;
+    background-color: var(--button-background-color);
+    border: var(--button-border);
+    border-radius: 10px;
+}
+
+.side-bar div button:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+.side-bar div button a {
+    color: var(--text-color-primary);
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.side-bar div button a p {
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.side-bar div button a img {
+    width: 24px;
+    height: 24px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.suggestion-container {
+    width: 1245px;
+    height: 56px;
+    background-color: var(--color-primary);
+    top: 56px;
+    left: 94px;
+    position: fixed;
+    z-index: 100;
+}
+
+.suggestion-container .suggestions {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding-top: 11px;
+    height: 56px;
+    padding-right: 50px;
+    padding-left: 80px;
+}
+
+.right-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 56px;
+    width: 50px;
+    background-color: var(--color-primary);
+}
+
+.right-arrow::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 50px;
+    height: 56px;
+    width: 50px;
+    background: linear-gradient(to left, #0f0f0f, transparent);
+}
+
+.right-arrow button {
+    width: var(--button-width);
+    height: var(--button-height);
+    border-radius: var(--button-border-radius);
+    border: var(--button-border);
+    background-color: var(--button-background-color);
+    margin-top: 8px;
+}
+
+.right-arrow button:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+.right-arrow button img {
+    width: 16px;
+    height: 16px;
+}
+
+.left-arrow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 56px;
+    width: 50px;
+    background-color: var(--color-primary);
+}
+
+.left-arrow::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50px;
+    height: 56px;
+    width: 50px;
+    background: linear-gradient(to right, #0f0f0f, transparent);
+}
+
+.left-arrow button {
+    width: var(--button-width);
+    height: var(--button-height);
+    border-radius: var(--button-border-radius);
+    border: var(--button-border);
+    background-color: var(--button-background-color);
+    margin-top: 8px;
+}
+
+.left-arrow button:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+.left-arrow button img {
+    width: 16px;
+    height: 16px;
+}
+
+.suggestion-container .suggestions::-webkit-scrollbar {
+    height: 0;
+}
+
+.suggestion-container .suggestions .suggested {
+    display: inline-block;
+    white-space: nowrap;
+    padding-inline: 13px;
+    margin-right: 12px;
+    border: var(--button-border);
+    border-radius: 8px;
+    height: 32px;
+    background-color: var(--color-secondary);
+    transition: background-color .3s;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.suggestion-container .suggestions .suggested:hover {
+    background-color: var(--color-secondary-hover);
+}
+
+.suggestion-container .suggestions .suggested a {
+    color: var(--text-color-primary);
+    text-decoration: none;
+}
+
+
+.main {
+    margin-left: 94px;
+    margin-top: 117px;
+    background-color: var(--color-primary);
+    width: 1245px;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content {
+    width: 100%;
+    height: 355px;
+    margin-bottom: 40px;
+    background-color: var(--color-primary);
+    padding-block: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.content .content-card {
+    width: 405px;
+    height: 355px;
+    padding-top: 10px;
+    background-color: var(--color-primary);
+}
+
+.content .content-card a {
+    text-decoration: none;
+}
+
+.content .content-card a .play-area {
+    width: 100%;
+    height: 215px;
+    /* background-color: var(--color-secondary); */
+    border-radius: 15px;
+    transition: border-radius 0.3s;
+    position: relative;
+}
+
+.content .content-card a .play-area:hover {
+    border-radius: 0;
+}
+
+.content .content-card a .play-area img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+.content .content-card a .play-area img:hover {
+    opacity: 0;
+}
+
+.content .content-card a .play-area video {
+    width: 100%;
+    height: 100%;
+    /* object-fit: fill; */
+    border-radius: 15px;
+}
+
+.content .content-card a .data-area {
+    width: 100%;
+    height: 140px;
+    background-color: var(--color-primary);
+    display: flex;
+
+}
+
+.content .content-card a .data-area .channel-img {
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+    border-radius: 30px;
+    overflow: hidden;
+    background-color: var(--color-secondary);
+}
+
+.content .content-card a .data-area div {
+    width: 330px;
+    height: 140px;
+    padding-left: 7px;
+    background-color: var(--color-primary);
+}
+
+.content .content-card a .data-area div h3 {
+    margin-top: 12px;
+    margin-bottom: 5px;
+    color: var(--text-color-primary);
+    font-size: 16px;
+    word-spacing: 1px;
+}
+
+.content .content-card a .data-area div p {
+    margin-top: 0;
+    margin-bottom: 4px;
+    color: var(--text-color-secondary);
+    font-size: 14px;
+}
+
+.content .content-card a .data-area div .channel-name {
+    display: inline-block;
+}
+
+.content .content-card a .data-area div .channel-name:hover {
+    color: var(--text-color-primary);
+}
+
+.content .content-card a .data-area button {
+    width: var(--button-width);
+    height: var(--button-height);
+    border-radius: var(--button-border-radius);
+    border: var(--button-border);
+    background-color: var(--button-background-color);
+}
+
+.content .content-card a .data-area button img {
+    width: 16px;
+    height: 16px;
+}
+
+.shorts {
+    width: 100%;
+    border-bottom: 1px solid var(--text-color-secondary);
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.shorts-nav {
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 10px;
+}
+
+.shorts-nav div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.shorts-nav div p {
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 10px;
+    color: var(--text-color-primary);
+}
+
+.shorts-nav button {
+    width: var(--button-width);
+    height: var(--button-height);
+    border: var(--button-border);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+}
+
+.shorts-nav button img {
+    width: 25px;
+    height: 25px;
+}
+
+.shorts-nav button:hover {
+    background-color: var(--button-background-color-hover);
+}
+
+.shorts-content {
+    width: 100%;
+    height: 480px;
+    margin-top: 15px;
+    background-color: var(--color-primary);
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.shorts-content-card {
+    width: 238px;
+    height: 100%;
+    background-color: var(--color-primary);
+}
+
+.shorts-content-card a {
+    text-decoration: none;
+}
+
+.shorts-content-card a .shorts-play {
+    width: 100%;
+    height: 410px;
+    border-radius: 15px;
+    background-color: var(--color-secondary);
+}
+
+.shorts-content-card a .shorts-play video {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.shorts-content-card a .shorts-data {
+    width: 100%;
+    height: 70px;
+    background-color: var(--color-primary);
+    display: flex;
+}
+
+.shorts-content-card a .shorts-data div {
+    width: 218px;
+    background-color: var(--color-primary);
+}
+
+.shorts-content-card a .shorts-data div h2 {
+    color: var(--text-color-primary);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.shorts-content-card a .shorts-data div p {
+    color: var(--text-color-secondary);
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.shorts-content-card a .shorts-data button {
+    width: 23px;
+    height: 23px;
+    border: var(--button-border);
+    border-radius: var(--button-border-radius);
+    background-color: var(--button-background-color);
+    background-image: url(./Assets/icons/options-vertical-svgrepo-com.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    margin-top: 10px;
+}
+
+.show-more {
+    width: 350px;
+    height: 38px;
+    border: 1px solid var(--text-color-secondary);
+    background-color: var(--color-primary);
+    border-radius: 20px;
+    color: var(--text-color-primary);
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: -19px;
+    left: 447.5px;
+
+}
+
+.show-more:hover {
+    background-color: #3c3c3c;
+}
+
+.show-more div {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.show-more div img {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.content .content-card a .play-area-2 {
+    width: 100%;
+    height: 215px;
+    background-color: var(--color-secondary);
+    border-radius: 15px;
+    transition: border-radius 0.3s;
+    animation: blink 2s linear infinite;
+}
+
+.content .content-card a .play-area-2:hover {
+    border-radius: 0;
+}
+
+.content .content-card a .data-area-2 {
+    width: 100%;
+    height: 140px;
+    background-color: var(--color-primary);
+    display: flex;
+
+}
+
+.content .content-card a .data-area-2 .channel-img {
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+    border-radius: 30px;
+    overflow: hidden;
+    background-color: var(--color-secondary);
+    animation: blink 2s linear infinite
+}
+
+.content .content-card a .data-area-2 div {
+    width: 330px;
+    height: 140px;
+    padding-left: 7px;
+    background-color: var(--color-primary);
+}
+
+.content .content-card a .data-area-2 div h3 {
+    margin-top: 12px;
+    margin-bottom: 5px;
+    width: 300px;
+    height: 24px;
+    border-radius: 15px;
+    background-color: var(--color-secondary);
+    color: var(--text-color-primary);
+    font-size: 16px;
+    word-spacing: 1px;
+    animation: blink 2s linear infinite
+}
+
+.content .content-card a .data-area-2 div p {
+    margin-top: 0;
+    margin-bottom: 4px;
+    width: 200px;
+    height: 16px;
+    border-radius: 15px;
+    background-color: var(--color-secondary);
+    color: var(--text-color-secondary);
+    font-size: 14px;
+    animation: blink 2s linear infinite
+}
+
+.content .content-card a .data-area-2 div .channel-name {
+    display: inline-block;
+    width: 100px;
+    height: 16px;
+    background-color: var(--color-secondary);
+    animation: blink 2s linear infinite
+}
+
+.content .content-card a .data-area-2 div .channel-name:hover {
+    color: var(--text-color-primary);
+}
+
+.content .content-card a .data-area-2 button {
+    width: var(--button-width);
+    height: var(--button-height);
+    border-radius: var(--button-border-radius);
+    border: var(--button-border);
+    background-color: var(--button-background-color);
+}
+
+.content .content-card a .data-area-2 button img {
+    width: 16px;
+    height: 16px;
+}
+
+@keyframes blink {
+    0% {
+        background-color: var(--color-secondary);
+    }
+
+    50% {
+        background-color: var(--color-secondary-hover);
+    }
+
+    100% {
+        background-color: var(--color-secondary);
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        /* flex-wrap: wrap; */
+    }
+}
+
+@media (min-width: 481px) and (max-width: 1024px) {}
+
+@media (min-width: 1025)
